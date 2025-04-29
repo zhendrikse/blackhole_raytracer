@@ -10,6 +10,8 @@ class Ray:
     self.acceleration = Vector()
     self.total_time = 0
     self.crossed_xz = False
+    self.cross_point = None
+    self.prev_pos = None
 
   def point(self, dist):
     return self.origin + dist*self.direction
@@ -23,8 +25,8 @@ class Ray:
     self.velocity = c*self.velocity.normalize()
     self.position += self.velocity*t + (self.acceleration/2)*t**2
     self.total_time += t
-    
-    self.crossed_xz = 0 <= max(self.prev_pos.y, self.position.y) and 0 >= min(self.prev_pos.y, self.position.y)
+
+    self.crossed_xz = max(self.prev_pos.y, self.position.y) >= 0 >= min(self.prev_pos.y, self.position.y)
     if self.crossed_xz:
       a = self.prev_pos
       b = self.position

@@ -1,6 +1,6 @@
 class Color:
   def __init__(self, value=(0, 0, 0)):
-    if (isinstance(value, str)):
+    if isinstance(value, str):
       self.r = int(value[1:3], 16)
       self.g = int(value[3:5], 16)
       self.b = int(value[5:7], 16)
